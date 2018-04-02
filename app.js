@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var express = require('express');
 var path = require('path');
 var cors = require('cors');
@@ -14,3 +15,6 @@ app.get('/', (req,res) => {
     console.log('server Connected');
     res.send("Server Connected");
 })
+=======
+
+>>>>>>> 2a0dfaba9f6223f79c4f9b5dcc64a4bd68e4b2d1
