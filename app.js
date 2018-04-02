@@ -18,13 +18,20 @@ var app = express();
 apiRoutes(app);
 
 
-/////////////////////////////////////////////DB Connection and initial check
+/////////////////////////////////////////////database Connection and initial check
 //Configuring DB connection
 mongoose.connect(conn.dbConnection());
 //Checking the db connectivity
 mongoose.connection.on('connected', ()=>{
     console.log('Connection made to db');
+});
+//DB Connectivity error 
+mongoose.connection.on('err', (err)=>{
+    console.log("Error is " +err);
 })
+
+
+
 
 //The server uses the middle ware cors in order to get req from angular to process it in node
 app.use(cors())
