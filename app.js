@@ -1,20 +1,22 @@
-<<<<<<< HEAD
 var express = require('express');
 var path = require('path');
-var cors = require('cors');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var passport = require('passport');
-var mongooose = require('mongoose');
+var mongoose = require('mongoose');
 
-//Initializing app variable with express
+//app variable in initialized
 var app = express();
-app.listen(3000);
 
-//home page response
+//Configuring the default router
 app.get('/', (req,res) => {
-    console.log('server Connected');
-    res.send("Server Connected");
+    res.send("Server Started");
 })
-=======
 
->>>>>>> 2a0dfaba9f6223f79c4f9b5dcc64a4bd68e4b2d1
+//The server uses the middle ware cors in order to get req from angular to process it in node
+app.use(cors())
+
+//The server is listening to the port 300
+app.listen(3000, () => {
+    console.log("Server has been started");
+});
