@@ -19,6 +19,7 @@ var app = express();
 mongoose.connect(conn.dbConnection());
 //Checking the db connectivity
 mongoose.connection.on('connected', (err)=>{
+    if(err) throw err;
     console.log('Connection made to db');
 });
 //DB Connectivity error 
