@@ -22,7 +22,7 @@ apiRoutes(app);
 //Configuring DB connection
 mongoose.connect(conn.dbConnection());
 //Checking the db connectivity
-mongoose.connection.on('connected', ()=>{
+mongoose.connection.on('connected', (err)=>{
     console.log('Connection made to db');
 });
 //DB Connectivity error 
@@ -37,6 +37,6 @@ mongoose.connection.on('err', (err)=>{
 app.use(cors())
 
 //The server is listening to the port 3000
-app.listen(3000, () => {
+app.listen(3002, () => {
     console.log("Server has been started");
 });

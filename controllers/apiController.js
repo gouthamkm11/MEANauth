@@ -3,7 +3,7 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken');
 //Body parser and urlEncodedParser to extract contents from body of http request for a post method
 var bodyParser = require('body-parser');
-var urlEncodedParser = bodyParser.urlEncodedParser({extended:false});
+var urlEncodedParser = bodyParser.urlencoded({extended:false})
 //////////////////////////////////////////End of imports
 
 module.exports = function(app){
@@ -21,7 +21,7 @@ module.exports = function(app){
 
         users.addUser(newUser, (err, user)=>{
             if(err){
-                res.json({success:false, message:'User not registered'})
+                res.json({success:false, message:"user not registered"})
             }
             else{
                 res.json({success:true, message:'User registered'})
