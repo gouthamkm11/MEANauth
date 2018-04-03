@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var bodyParser = require('body-parser');
 var cors = require('cors');
 var passport = require('passport');
 var mongoose = require('mongoose');
@@ -13,9 +12,6 @@ var conn = require('./config/connection');
 //app variable in initialized
 var app = express();
 
-///////////////////////////////////////////////////////////////////route configuration
-//Initialzing the user routes for the application
-apiRoutes(app);
 
 
 /////////////////////////////////////////////database Connection and initial check
@@ -29,6 +25,10 @@ mongoose.connection.on('connected', (err)=>{
 mongoose.connection.on('err', (err)=>{
     console.log("Error is " +err);
 })
+
+///////////////////////////////////////////////////////////////////route configuration
+//Initialzing the user routes for the application
+apiRoutes(app);
 
 
 

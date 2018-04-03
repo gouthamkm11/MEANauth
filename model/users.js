@@ -7,21 +7,17 @@ var userSchema = mongoose.Schema({
         type : String
     },
     email: {
-        type: String,
-        required: true
+        type: String
     },
     username: {
-        type: String,
-        required: true
+        type: String
     },
     password: {
-        type: String,
-        required: true
+        type: String
     }
 });
 
-var users = mongoose.model('users', userSchema);
-module.exports = users;
+var users = module.exports = mongoose.model('users', userSchema);
 
 module.exports.getUserById = function(id, callback){
     users.findById(id, callback);
@@ -39,4 +35,5 @@ module.exports.addUser = function(newUser, callback){
             newUser.save(callback);
         })
     });
+    newUser.save(callback);
 };

@@ -3,15 +3,18 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken');
 //Body parser and urlEncodedParser to extract contents from body of http request for a post method
 var bodyParser = require('body-parser');
-var urlEncodedParser = bodyParser.urlencoded({extended:false})
+var urlEncodedParser = bodyParser.urlencoded({extended:false});
 //////////////////////////////////////////End of imports
 
 module.exports = function(app){
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({extended:false}));
+
     app.get('/', (req,res)=>{
         res.send("Server connected");
     });
 
-    app.post('/users/register', urlEncodedParser, (req,res)=>{
+    app.post('/users/register', (req,res)=>{
         let newUser = new users({
             name: req.body.name,
             email: req.body.email,
@@ -19,18 +22,18 @@ module.exports = function(app){
             password: req.body.password
         });
 
-        users.addUser(newUser, (err, user)=>{
+        users.addUser(newUser, (err)=>{
             if(err){
-                res.json({success:false, message:"user not registered"})
+                res.send({success:false, message:"user not registered"})
             }
             else{
-                res.json({success:true, message:'User registered'})
+                res.send({success:true, message:'User registered'})
             }
         });
     });
 
     app.post('/users/authenticate', urlEncodedParser, (req,res)=>{
-        res.send("Authenticate Route created")
+        res.send(req.body.name);
     });
 
     app.get('/users/profile', (req,res)=>{
